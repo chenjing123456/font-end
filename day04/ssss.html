@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>三生三世十里桃花</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+     *{
+     	padding: 0px;
+     	margin: 0px;
+     }
+     body{
+     	background: url(5.jpg) no-repeat;
+     	background-size:cover; 
+     }
+     ul{
+     	width: 200px;
+     	height: 200px;
+     	position: absolute;
+     	bottom: 100px;
+     	/*background-color: red;*/
+     	left: 50%;
+     	margin-left: -100px;
+        transform-style:preserve-3d;
+        /*transform:rotateX(-10deg);*/
+        animation:move 7s linear 0s infinite normal;
+     }
+     @keyframes move{
+     	from{
+     		/*transform:rotateY(0deg) rotateX(-10deg);*/
+       		transform:rotateX(-10deg) rotateY(0deg) ;
+
+     	}
+     	to{
+     		/*transform:rotateY(360deg) rotateX(-10deg);会改变旋转的方式。所以固定的要写在前面，改变的属性值写在后面*/
+     		transform:rotateX(-10deg) rotateY(360deg) ;
+
+     	}
+     }
+     ul:hover{
+     	animation-play-state:paused;
+     }
+     ul:hover li img{
+     	opacity: 0.5;
+     }
+     ul li:hover img{
+     	opacity: 1;
+     }
+     ul li{
+     	list-style: none;
+     	position: absolute;
+     	line-height: 200px;
+     	text-align: center;
+     	width: 200px;
+     	height: 200px;
+     	background-color: black;
+     }
+     ul li:nth-child(1){
+    	/*background-color:yellow;*/
+    	transform:rotateY(60deg) translateZ(200px);
+    }
+     ul li:nth-child(2){
+    	/*background-color:red;*/
+    	transform:rotateY(120deg) translateZ(200px);
+    }
+     ul li:nth-child(3){
+    	/*background-color:pink;*/
+    	transform:rotateY(180deg) translateZ(200px);
+    }
+     ul li:nth-child(4){
+    	/*background-color:green;*/
+    	transform:rotateY(240deg) translateZ(200px);
+    }
+     ul li:nth-child(5){
+    	/*background-color:purple;*/
+    	transform:rotateY(300deg) translateZ(200px);
+    }
+     ul li:nth-child(6){
+    	/*background-color:skyblue;*/
+    	transform:rotateY(360deg) translateZ(200px);
+    }
+
+
+    .dibu{
+    	position: absolute;
+    	bottom: 100px;
+    	left: 40px;
+    	opacity: 0.3;
+    	width: 50px;
+    	height: 50px;
+    	animation:spore 6s linear 0s infinite normal;
+    }
+    @keyframes spore{
+    	10%{
+    		bottom: 300px;
+    		left: 100px;
+    		opacity:0;
+    	}
+    	20%{
+    		bottom: 400px;
+    		left: 100px;
+    		opacity: 0.3;
+    	}
+    	40%{
+    		bottom: 450px;
+    		left: 300px;
+    		opacity: 0;
+    	}
+    	70%{
+    	bottom: 500px;
+    	left: 600px;
+    	opacity: 0.5;	
+    	}
+    	80%{
+    	bottom: 500px;
+    	left: 800px;
+    	opacity: 0.3;	
+    	}  
+    	90%{
+    	bottom: 300px;
+    	left: 900px;
+    	opacity: 0.5;	
+    	}  	
+    	92%{
+    	bottom: 50px;
+    	left: 1000px;
+    	opacity: 0.3;	
+    	}
+    	100%{
+    	bottom: 20px;
+    	left: 1240px;
+    	opacity: 0.1;    	}
+    }
+	</style>
+</head>
+<body>
+<ul>
+	<li><img src="8.jpg"></li>
+	<li><img src="9.jpg"></li>
+	<li><img src="10.jpg"></li>
+	<li><img src="11.jpg"></li>
+	<li><img src="12.jpg"></li>
+	<li><img src="13.jpg"></li>
+</ul>
+<img class="dibu" src="0.jpg">
+</body>
+</html>
