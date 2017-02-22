@@ -9,10 +9,17 @@
      	margin: 0px;
      }
      body{
-     	background: url(5.jpg) no-repeat;
+     	background: url(images/5.jpg) no-repeat;
      	background-size:cover; 
      }
-     ul{
+     a{
+        text-decoration: none;
+     }
+     a:hover{
+        background-color: rgba(255,255,255,0.5);
+        color: pink;
+     }
+     .image{
      	width: 200px;
      	height: 200px;
      	position: absolute;
@@ -36,16 +43,16 @@
 
      	}
      }
-     ul:hover{
+     .image:hover{
      	animation-play-state:paused;
      }
-     ul:hover li img{
+     .image:hover .images img{
      	opacity: 0.5;
      }
-     ul li:hover img{
+     .image .images:hover img{
      	opacity: 1;
      }
-     ul li{
+     .image .images{
      	list-style: none;
      	position: absolute;
      	line-height: 200px;
@@ -54,32 +61,30 @@
      	height: 200px;
      	background-color: black;
      }
-     ul li:nth-child(1){
+     .image .images:nth-child(1){
     	/*background-color:yellow;*/
     	transform:rotateY(60deg) translateZ(200px);
     }
-     ul li:nth-child(2){
+     .image .images:nth-child(2){
     	/*background-color:red;*/
     	transform:rotateY(120deg) translateZ(200px);
     }
-     ul li:nth-child(3){
+     .image .images:nth-child(3){
     	/*background-color:pink;*/
     	transform:rotateY(180deg) translateZ(200px);
     }
-     ul li:nth-child(4){
+     .image .images:nth-child(4){
     	/*background-color:green;*/
     	transform:rotateY(240deg) translateZ(200px);
     }
-     ul li:nth-child(5){
+     .image .images:nth-child(5){
     	/*background-color:purple;*/
     	transform:rotateY(300deg) translateZ(200px);
     }
-     ul li:nth-child(6){
+     .image .images:nth-child(6){
     	/*background-color:skyblue;*/
     	transform:rotateY(360deg) translateZ(200px);
     }
-
-
     .dibu{
     	position: absolute;
     	bottom: 100px;
@@ -108,17 +113,17 @@
     	70%{
     	bottom: 500px;
     	left: 600px;
-    	opacity: 0.5;	
+    	opacity: 0.1;	
     	}
     	80%{
     	bottom: 500px;
     	left: 800px;
-    	opacity: 0.3;	
+    	opacity: 0;	
     	}  
     	90%{
     	bottom: 300px;
     	left: 900px;
-    	opacity: 0.5;	
+    	opacity: 0.3;	
     	}  	
     	92%{
     	bottom: 50px;
@@ -128,19 +133,113 @@
     	100%{
     	bottom: 20px;
     	left: 1240px;
-    	opacity: 0.1;    	}
+    	opacity: 0.1;   
+    	}
     }
+    .dibu:hover{
+        animation-play-state:paused;
+    }
+    .nav{
+    width: 400px;
+    height: 40px;
+    /*background-color: skyblue;*/
+    background-color: rgba(255,255,255,0);
+    /*margin-top: 100px;*/
+    /*margin: 0 auto;*/
+    /*padding-left: 10px;*/
+  }
+  .nav>li{
+    list-style: none;
+    float: left;
+    width: 120px;
+    height: 40px;
+    background-color: rgba(255,255,255,0.5);
+    /*border: 1px solid red;*/
+    margin-left: 10px;
+    line-height: 40px;
+    text-align: center;
+    position: relative;
+    font-size: 12px;
+    color: pink;
+  }
+  .sub{
+    position: absolute;
+    left: 0px;
+    top: 40px;
+  }
+ .nav .sub li{
+    /*background-color: yellow;*/
+    background-color: rgba(255,255,255,0);
+    list-style: none;
+    width: 120px;
+    height: 40px;   
+    line-height: 40px;
+    text-align: center;
+    transform:rotateY(180deg);
+    transition:all 1s;
+    opacity: 0;
+ }
+ .nav>li:hover .sub li{
+    opacity: 1;
+    transform:none;
+ }
+.nav>li:hover .sub li:nth-child(1){
+    transition-delay:0ms;
+}
+.nav>li:hover .sub li:nth-child(2){
+    transition-delay:200ms;
+}.nav>li:hover .sub li:nth-child(3){
+    transition-delay:400ms;
+}.nav>li:hover .sub li:nth-child(4){
+    transition-delay:600ms;
+}
+.nav>li .sub li:nth-child(4){
+    transition-delay:0ms;
+}
+.nav>li .sub li:nth-child(3){
+    transition-delay:200ms;
+}
+.nav>li .sub li:nth-child(2){
+    transition-delay:400ms;
+}
+.nav>li .sub li:nth-child(1){
+    transition-delay:600ms;
+}
+/*.nav li{
+    font-size: 12px;
+    color: skyblue;
+
+}*/
 	</style>
 </head>
 <body>
-<ul>
-	<li><img src="8.jpg"></li>
-	<li><img src="9.jpg"></li>
-	<li><img src="10.jpg"></li>
-	<li><img src="11.jpg"></li>
-	<li><img src="12.jpg"></li>
-	<li><img src="13.jpg"></li>
+<ul class="nav">    
+    <li>
+        <details>
+            <surmary>
+             讲述了青丘帝姬白浅和九重天太子夜华的三生爱恨，三世纠葛的故事。 
+            </surmary>
+        </details>
+    </li>
+    <li>主演
+        <ul class="sub">    
+           <li><a href="http://baike.baidu.com/link?url=fxQLuGEJq6o_x8gxPjXGgC3ZYkdf33vNO39ndczSFO7OA9AMynrfAok1dKupVALsdjx-xde0qAnipvC5XuElJdm0JHebmEJLsvHVL0Gxpq3" target="_blank">杨幂</a></li>
+           <li><a href="#">赵又廷</a></li>
+           <li><a href="#">于朦胧</a></li>
+           <li><a href="#">张智尧</a></li>
+           <li><a href="#">迪丽热巴</a></li>
+           <li><a href="#">李伟光</a></li>
+        </ul>
+    </li>
 </ul>
-<img class="dibu" src="0.jpg">
+<ul class="image">
+	<li class="images"><img src="images/8.jpg"></li>
+	<li class="images"><img src="images/9.jpg"></li>
+	<li class="images"><img src="images/10.jpg"></li>
+	<li class="images"><img src="images/11.jpg"></li>
+	<li class="images"><img src="images/12.jpg"></li>
+	<li class="images"><img src="images/13.jpg"></li>
+</ul>
+<img class="dibu" src="images/0.jpg">
 </body>
 </html>
