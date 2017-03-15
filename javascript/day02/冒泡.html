@@ -76,15 +76,15 @@
   var d=0;
   //外循环控制趟数 ，假设有n个数，则比较的趟数为n-1次
   for(var i=0;i<array.length-1;i++) {
-    var isSort=true;//假设已经排好序
+    var isSort=true;//假设已经排好序(每一趟)
     //内循环控制比较的次数
     for(var j=0;j<array.length-1-i;j++){
     	//两两比较大小 从小到大
     	if(array[j]>array[j+1]){//交换两个数
-    		isSort=false;//如果没有排序好，就继续交换
     		var tep=array[j];
     		array[j]=array[j+1];
     		array[j+1]=tep;
+        isSort=false;//如果交换位置，则说明排序不ok
     	}
     	s++;
     }  

@@ -39,8 +39,22 @@
     else{//用户输入的是NaN
     	console.log("输入一个数");
     }
-//输出询问”我爱你嫁给我吧“，选择“你喜欢我吗”如果为n则一直询问，如果为y则打印“我们形影不离”
-var value=prompt("do you love me?","y or n");
-</script>
+//输出询问“你喜欢我吗”如果为n则一直询问，如果为y则打印“我们形影不离”
+//方法一 循环条件为n
+  // do{
+  // var value=prompt("do you love me?y or n");
+  // if (value==="y") {
+  //     console.log("我们形影不离");
+  // }
+  // }while(value!=="y")
+//方法二 写一个死循环 如果为y 直接break
+    do{
+     var value=prompt("do you love me?y or n");
+     if(value==="y"){
+      console.log("我们形影不离");
+      break;
+     }
+    }while(true)
+  </script>
 </body>
 </html>
