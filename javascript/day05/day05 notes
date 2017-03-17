@@ -1,0 +1,22 @@
+                     内置对象Array
+1.数组对象
+ (1)检测数组
+    instanceof
+        a.instanceof 和 typeof 的区别
+	       @1： typeof 可以获取任意变量的类型;但如果是对象的话只能判断为Object
+	       @2： instanceof 可以判断对象的具体类型
+    Array.isArray();html5新增
+ (2)数组方法
+   MDN文档：http://devoloper.mozilla.org/zh-CN
+                    内置对象DOM
+1.Docunment Object model文档对象模型，是一套操作html和xml文档的API
+2.ducument可以做什么
+  找对象（元素）
+  设置元素的属性
+  设置元素的样式
+  动态创建和删除元素
+  事件--触发响应  
+       事件的触发者（事件源）
+       事件名称
+       事件响应程序
+
