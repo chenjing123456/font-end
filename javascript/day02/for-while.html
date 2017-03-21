@@ -79,6 +79,33 @@
 var sex=1;
 sex=sex===1?"男":"女";
 console.log(sex);
+//求100-999里面有多少水仙花数并输出
+//水仙花数是指百位数的立方加上十位数的立方加上个位数的立方=自己的那些数
+var number=0;//定义水仙花数量
+for(var i=100;i<=999;i++){
+  var bai=parseInt(i/100);
+  var shi=parseInt(i%100/10);
+  var ge=(i%10);
+  var sum=Math.pow(bai,3)+Math.pow(shi,3)+Math.pow(ge,3);
+  if(sum==i){//如果等于自己 说明是水仙花数
+    console.log(i);//输出水仙花数
+    number++;//每进入一次，说明水仙花加1
+  }
+}
+console.log(number);
+//求1-100的质数（大于1并且只能被1和本身整除）
+//外层循环控制1-100之间色数字
+   for(var i=1;i<=100;i++){
+    //内层循环控制除了1和本身之外i能被整除的循环
+    for(var j=2;j<=i-1;j++){
+      if(i%j==0){//判断j是否能被i整除，如果可以则不是质数
+        break;
+      }
+    }
+    if(i==j){
+      console.log("是质数"+i);
+    }
+   }
 </script>
 </body>
 </html>
