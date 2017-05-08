@@ -39,6 +39,7 @@ function Person(name,age,gender){
   * 在开发中会引入各种框架或者库，自定义的成员越多，出现的命名冲突几率越大
   
   * 可能在开发中会有多个构造函数，每个构造函数应该有多个方法，那么就会变得不容易维护
+
 5.任意一个对象都会默认的链接到它的原型中
 
  * 创建一个函数，会附带的创建一个特殊的对象，该对象使用 函数.prototype 引用(作为函数的一个属性)，称其为函数的原型属性。
@@ -100,21 +101,25 @@ p2.say();
 
   - 实例(instance)和对象(object)
   
-   - 实例是指某一个构造函数创建出来的对象，我们称为构造函数的实例
-   - 实例就是对象，对象是一个泛称
-   - 实例和对象是近义词
+     - 实例是指某一个构造函数创建出来的对象，我们称为构造函数的实例
+     
+     - 实例就是对象，对象是一个泛称
+     
+     - 实例和对象是近义词
         
-  - 键值对  属性和方法
+  - 键值对：属性和方法
   
-        * 在js中键值对的集合称为对象
-           * 如果值为数据，就称给键值对为属性property
-           * 如果值为函数,就称该键值对为方法method
+     * 在js中键值对的集合称为对象
+           
+       * 如果值为数据，就称给键值对为属性property
+           
+       * 如果值为函数,就称该键值对为方法method
   
   - 父类和子类
   
-        *  传统的对象语言中使用类来实现继承，那么就有父类和子类的概念，基类和子类。
+     *  传统的对象语言中使用类来实现继承，那么就有父类和子类的概念，基类和子类。
         
-        *  在js中常常称为父对象，子对象，基对象，派生对象。
+     *  在js中常常称为父对象，子对象，基对象，派生对象。
 
 2.原型相关的概念
 
@@ -138,7 +143,9 @@ p2.say();
          * 也就是说实例对象直接含有原型中的成员
          * 因此实例对象继承自原型
          * 这样的继承就是“原型继承”。
-      
+
+![](原型继承.png =50*30)  
+
 3.常用对象
 
  - {}--构函是Object
@@ -155,7 +162,7 @@ p2.say();
 
 2.怎么使用
 
-   * 利用对象的动态特性
+   * 利用对象的动态特性(点语法)
      ```
      构函.prototype.xxx=vvv;
      ```
@@ -165,6 +172,8 @@ p2.say();
      	//添加方法
      }
      ```
+
+![](原型使用.png =50*50)     
 
 ##markdown语法
 
@@ -181,6 +190,8 @@ p2.say();
     * 可以用* - + 表示无序列表（必须前后有空格）
   
     * 用1 2 3表示有序列表
+    
+    * 用```![](路径 =width*height)```表示图片
     
 ##json对象与对象字面量的区别
 
@@ -374,6 +385,113 @@ var F=Person;//把Person对象的地址赋给F
 Person=123;//Person不再是构造函数
 new F();
 ```
+#原型实例构函三角图
+
+1.三角图：![](原型实例构函三角图.png =50*50)
+
+2.练习：
+
+```
+1.
+function Person(){
+  this.name='zs',
+  this.sayHello=function(){
+  console.log('hello');
+  }
+}
+var p=new Person();
+var q=new Person();
+```
+![](1.png =20*20)
+
+```
+2.点语法
+function Person(){
+  this.name='zs'
+}
+Person.prototype.sayHello=function(){
+  console.log('hello');
+  }
+var p=new Person();
+var q=new Person();
+```
+![](2.png =20*20)
+
+```
+3.直接替换法（新创建的原型默认没有constructor属性）
+function Person(){
+  this.name='zs'
+}
+Person.prototype={
+  sayHello:function(){
+  console.log('hello');
+  }
+}
+var p=new Person();
+var q=new Person();
+```
+
+![](3.png =20*20)
+
+#自定义集合
+
+自定义构造函数的prototype属性用数组代替
+
+1.一般情况下，开发中尽量少修改内置的系统对象和构函，所以使用[]缓冲
+```
+function ItCastCollection(){};
+  //要定义数组的方法为其添加成员
+  ItCastCollection.prototype=[];
+  //ItCastCollection.prototype=new Array(0);
+  //一般情况下，开发中尽量少修改内置的系统对象
+  var arr=new ItCastCollection();
+  arr.push('2','d','f','4');
+  //自定义集合的目的是让其向数组一样使用，但是同时有一些数组无法实现的方法
+  ItCastCollection.prototype.sum=function(){};
+  console.log([].sum);//undefined
+```
+
+2.不建议使用此方法，因为自己定义的特有方法会污染Array.prototype的内置方法
+```
+function ItCastCollection(){};
+  //要定义数组的方法为其添加成员
+  ItCastCollection.prototype=Array.prototype;//性能比上面好，但是会污染系统对象
+  var arr=new ItCastCollection();
+  arr.push('2','d','f','4');
+  //自定义集合的目的是让其向数组一样使用，但是同时有一些数组无法实现的方法
+  ItCastCollection.prototype.sum=function(){};
+  console.log([].sum);//function,会污染系统的内置构函
+```
+
+#属性搜索原则
+
+1.原型链
+
+2.属性搜索原则
+   
+   * 就是对象在访问属性和方法的时候，首先在该对象中找，如果有该成员则停止查找，直接使用该属性和方法。
+   
+   * 如果没有，那么再在其原型对象中查找，如果有该成员则停止查找，直接使用该属性和方法。
+   
+   * 如果原型还没有，就到原型的原型中查找
+   
+   * 如此往复，直到Object.prototype中还没有，那么如果是访问属性则返回undefined；如果是调用方法则报错（xxx不是一个函数）
+   
+#静态成员和实例成员的概念
+  从面向对象的语言中引入的
+
+1.静态成员表示的是静态方法和静态属性的概念。所谓静态就是由构造函数所提供的。
+
+```
+Person.prototype.sayHello
+```
+2.实例成员表示的是实例方法和实例属性，所谓的实例就是由构造函数所创建的对象。
+
+```
+p.sayHello
+```
+
+3.一般工具型方法都由静态成员提供，一般与实例对象有关的方法由实例成员表示。
 
 #面试题
  
@@ -387,8 +505,10 @@ new F();
   //一般考虑函数参数的时候，使用该方法兼容处理函数参数
   div.onclick=function( e ){
    e=e || window.event;
-  }
-3.变量名提升
-  
+  }  
 ```
+
+3.变量名提升
+
+4.
 
