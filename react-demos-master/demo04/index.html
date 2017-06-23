@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+      var Message=React.createClass({//组件类
+        render:function(){
+          return <h1>Hello {this.props.name+this.props.className}</h1>;//只有一个顶级标签，this.props表示组件的所有属性对象，可以访问所有属性
+        }
+      });
+      ReactDOM.render(
+        <Message name="chenjing123" className="jid"/>,//组件实例
+        document.getElementById('example')
+        );
+    </script>
+  </body>
+</html>

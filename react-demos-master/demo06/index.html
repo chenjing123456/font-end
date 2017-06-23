@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+
+      var data = 123;
+
+      var MyTitle = React.createClass({
+        propTypes: {
+          title: React.PropTypes.string.isRequired,
+          className:React.PropTypes.string.isRequired,
+        },//报错，data不是string类型
+//propTypes组件类的属性，用来验证组件实例的属性是否符合要求
+        getDefaultProps:function(){
+          return {
+            name:'nadffh'
+          };
+        },//getDefaultProps方法是设置组件属性的默认值
+        render: function() {
+          return <h1> {this.props.title+this.props.className+this.props.name} </h1>;
+        }
+      });
+
+      ReactDOM.render(
+        <MyTitle title={data} className="fgf"/>,
+        document.getElementById('example')
+      );
+
+    </script>
+  </body>
+</html>
+

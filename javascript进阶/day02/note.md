@@ -180,7 +180,7 @@ f1();
   
    * document.createTextNode
   
-   * document.createAttribute
+   * document.createAttribute创建属性节点
   
    * innerHTML
   
@@ -193,6 +193,8 @@ f1();
    * appendChlid 追加到结尾处
  
    * innerHTML
+   
+   * setAttributeNode()添加属性节点
  
    * insertBefore  将新元素插入到某一个旧元素前面 怎么调用？ 父元素.insertBefore(新元素,旧元素);
      
@@ -293,6 +295,6 @@ f1();
 
    * 访问数组或者对象不存在的成员/属性
    
-   * 定义变量为赋值
+   * 定义变量未赋值
    
    * 函数没有返回值或return后没有数据

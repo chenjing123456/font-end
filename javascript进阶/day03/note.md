@@ -14,7 +14,7 @@ function Person(name,age,gender){
 		}
 	}
 	var p1=new Person("zs",12,"女");
-    var p2=new Person("li",18,"女");
+  var p2=new Person("li",18,"女");
 	console.log(p1.sayHello==p2.sayHello);//false，两个对象的方法是不同的
 	p1.sayHello();
 ```
@@ -72,7 +72,7 @@ var p1=new Foo();
 var p2=new Foo();
 p1.say();//如果p1中没有say，那么就会在Foo.prototype原型对象上找
 ```
-7.由构造函数创建出来的多个对象共享一个对象，即构造函数.prototype对象。
+7.由构造函数创建出来的多个实例对象共享一个对象，即构造函数.prototype对象。
 8.结论：只需要将重复会多占用内存的东西放到构造函数.prototype中，那么所有对象就可以共享了.
 ```
 function Foo(){};

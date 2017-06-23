@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+      var NotesList = React.createClass({
+        render: function() {
+          return (
+            <ol>
+              {//this.props.children属性表示组件的所有子节点，有三种情况。没有子节点时是undefined;有一个节点时object;有多个节点时是Array。
+                React.Children.map(this.props.children,function(child){
+                  return <li>{child}</li>
+                })//用React.Children的方法处理this.props.children就不用担心它们的类型
+              }
+            </ol>
+          );
+        }
+      });
+
+      ReactDOM.render(
+        <NotesList>
+          <span>江西南昌</span>
+          <span>1224</span>
+        </NotesList>,
+        document.getElementById('example')
+      );
+    </script>
+  </body>
+</html>
+
